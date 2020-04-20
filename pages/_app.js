@@ -33,11 +33,13 @@ export default class MyApp extends App {
     if (!this.state.messages[locale]) {
       const data = await fetch(`/locales/${locale}`);
       const json = await data.json();
+      const { messages, localeData } = json;
+      document.getElementById('intl-locale-data').insertAdjacentText('beforeend', localeData)
       return this.setState({
         locale,
         messages: {
           ...this.state.messages,
-          [locale]: json
+          [locale]: messages
         }
       });
     }

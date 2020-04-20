@@ -26,6 +26,7 @@ export default class IntlDocument extends Document {
           <Main />
           <script src={polyfill} />
           <script
+            id="intl-locale-data"
             dangerouslySetInnerHTML={{
               __html: this.props.localeDataScript,
             }}

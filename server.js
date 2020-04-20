@@ -33,6 +33,7 @@ const supportedLanguages = {
 // We need to expose React Intl's locale data on the request for the user's
 // locale. This function will also cache the scripts by lang in memory.
 const localeDataCache = new Map();
+
 const getLocaleDataScript = locale => {
   const lang = locale.split("-")[0];
   if (!localeDataCache.has(lang)) {
@@ -102,7 +103,7 @@ const bootstrap = async () => {
   // Для загрузки локалей с фронта
   server.get('/locales/:locale', (req, res) => {
     const locale = req.params.locale;
-    res.send(messages[locale]);
+    res.send({ messages: messages[locale], localeData: getLocaleDataScript(locale) });
   });
 
   // Роуты с языковым ключом
