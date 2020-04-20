@@ -1,9 +1,3 @@
-// Polyfill Node with `Intl` that has data for all locales.
-// See: https://formatjs.io/guides/runtime-environments/#server
-const IntlPolyfill = require("intl");
-Intl.NumberFormat = IntlPolyfill.NumberFormat;
-Intl.DateTimeFormat = IntlPolyfill.DateTimeFormat;
-
 const { readFileSync, readdirSync } = require("fs");
 const { basename } = require('path')
 const next = require("next");
